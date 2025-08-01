@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:astacala_rescue/notifikasi.dart';
 import 'package:astacala_rescue/form_pelaporan.dart';
+import 'package:astacala_rescue/detail_berita_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -96,9 +97,16 @@ class _HomePageState extends State<HomePage> {
                         fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                 ),
-                TextButton(
+                ElevatedButton(
                   onPressed: () {
-                    // TODO: buka detail page
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailBeritaPage(
+                          id: int.parse(item['id'].toString()),
+                        ),
+                      ),
+                    );
                   },
                   child: const Text('Lihat Detail'),
                 ),
